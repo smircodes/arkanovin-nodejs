@@ -1,235 +1,234 @@
 /* header style */
 header {
-    color: var(--white);
-    width: 100%;
-    position: fixed;
-    padding: 5px 0;
-    z-index: 99;
+  color: var(--main-bg);
+  width: 100%;
+  position: fixed;
+  padding: 5px 0;
+  z-index: 99;
 }
 
 header.sticky,
 header.white-header {
-    color: var(--text);
-    background: var(--white);
+  color: var(--text);
+  background: var(--main-bg);
 }
 
 header.sticky {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 header.white-header {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-    position: relative;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    padding: 0px 20px;
-    border-bottom: 1px solid var(--white);
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 0px 20px;
+  border-bottom: 1px solid var(--main-bg);
 }
 
 /* change logo after scroll */
 .logo img:last-child,
 .sticky .logo img:first-child,
 .white-header .logo img:first-child {
-    display: none;
+  display: none;
 }
 
 .sticky .logo img:last-child,
 .white-header .logo img:last-child {
-    display: block;
+  display: block;
 }
 
 nav {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 nav a {
-    position: relative;
+  position: relative;
 }
 
 nav a::before {
-    content: "";
-    width: 0;
-    height: 3px;
-    position: absolute;
-    bottom: -35px;
-    background-color: var(--main-color);
-    transition: var(--transition);
+  content: "";
+  width: 0;
+  height: 3px;
+  position: absolute;
+  bottom: -35px;
+  background-color: var(--main-color);
+  transition: var(--transition);
 }
 
 nav a:hover::before {
-    width: 100%;
+  width: 100%;
 }
 
 a.active {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 a.active::before {
-    width: 100%;
+  width: 100%;
 }
 
 .sticky nav a:hover,
 .white-header nav a:hover {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 /* search style */
 .search-box {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 .search-input {
-    position: absolute;
-    padding: 0 20px;
-    top: 83px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    display: flex;
-    overflow: hidden;
-    background: var(--white);
-    transition: var(--transition);
+  position: absolute;
+  padding: 0 20px;
+  top: 83px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  display: flex;
+  overflow: hidden;
+  background: var(--main-bg);
+  transition: var(--transition);
 }
 
 .open-search-box {
-    padding: 20px;
-    height: inherit;
+  padding: 20px;
+  height: inherit;
 }
 
 .search-input input[type="text"] {
-    width: 100%;
-    border-color: var(--main-color);
-    border-radius: 0;
+  width: 100%;
+  border-color: var(--main-color);
+  border-radius: 0;
 }
 
 .search-input button:last-child {
-    border-radius: .5rem 0 0 .5rem;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 .search-input button:first-child {
-    border-radius: 0 .5rem .5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 header .fi {
-    color: var(--white);
+  color: var(--main-bg);
 }
 
 .sticky .header .fi,
 .white-header .header .fi {
-    color: var(--text);
+  color: var(--text);
 }
 
 .hmb {
-    cursor: pointer;
-    position: relative;
-    width: 25px;
-    display: none;
+  cursor: pointer;
+  position: relative;
+  width: 25px;
+  display: none;
 }
 
 /* hamburger menu icon*/
 .hmb span {
-    position: absolute;
-    width: 30px;
-    height: 4px;
-    background-color: #333;
-    transition: var(--transition);
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background-color: #333;
+  transition: var(--transition);
 }
 
 .hmb span:first-child {
-    top: -12px;
+  top: -12px;
 }
 
 .hmb span:nth-child(even) {
-    top: -4px;
+  top: -4px;
 }
 
 .hmb span:last-child {
-    top: 4px;
+  top: 4px;
 }
 
 .open-hmb span:nth-child(even) {
-    display: none;
+  display: none;
 }
 
 .open-hmb span:last-child {
-    top: -4px;
-    transform: rotate(+45deg);
+  top: -4px;
+  transform: rotate(+45deg);
 }
 
 .open-hmb span:first-child {
-    top: -4px;
-    transform: rotate(-45deg);
+  top: -4px;
+  transform: rotate(-45deg);
 }
 
-
 /* responsive menu */
-@media screen and (max-width : 900px) {
-    .header {
-        justify-content: space-between;
-    }
+@media screen and (max-width: 900px) {
+  .header {
+    justify-content: space-between;
+  }
 
-    .search-box {
-        margin-right: 0;
-    }
+  .search-box {
+    margin-right: 0;
+  }
 
-    .hmb {
-        display: block;
-    }
+  .hmb {
+    display: block;
+  }
 
-    nav a::before {
-        background-color: inherit;
-    }
+  nav a::before {
+    background-color: inherit;
+  }
 
-    header {
-        color: var(--text);
-        background: var(--white);
-        box-shadow: var(--box-shadow);
-    }
+  header {
+    color: var(--text);
+    background: var(--main-bg);
+    box-shadow: var(--box-shadow);
+  }
 
-    header .fi {
-        color: var(--text);
-    }
+  header .fi {
+    color: var(--text);
+  }
 
-    .logo img:first-child {
-        display: none;
-    }
+  .logo img:first-child {
+    display: none;
+  }
 
-    .logo img:last-child {
-        display: block;
-    }
+  .logo img:last-child {
+    display: block;
+  }
 
-    nav {
-        position: absolute;
-        top: 83px;
-        right: 0;
-        width: 100%;
-        height: 0;
-        overflow: hidden;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        gap: 40px;
-        background-color: var(--white);
-        transition: var(--transition);
-    }
+  nav {
+    position: absolute;
+    top: 83px;
+    right: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    background-color: var(--main-bg);
+    transition: var(--transition);
+  }
 
-    nav a:hover {
-        color: var(--main-color);
-    }
+  nav a:hover {
+    color: var(--main-color);
+  }
 
-    .open-menu {
-        color: var(--text);
-        height: 490px;
-        padding: 20px 0;
-        box-shadow: var(--box-shadow);
-    }
+  .open-menu {
+    color: var(--text);
+    height: 490px;
+    padding: 20px 0;
+    box-shadow: var(--box-shadow);
+  }
 }
 
 /* end header style */
