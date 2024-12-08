@@ -6,7 +6,6 @@
   --border-color: rgba(13, 20, 6, 0.2);
   --main-color: #85c441;
   --color-hover: #444;
-  --white: #fff;
   --font: IranYekan;
   --transition: 0.3s linear;
   --max-width: 1280px;
@@ -75,14 +74,14 @@ section {
 
 button i {
   font-size: 14px;
-  color: var(--white) !important;
+  color: var(--main-bg) !important;
 }
 
 .btn {
   cursor: pointer;
   font-family: var(--font);
   font-size: 16px;
-  color: var(--white);
+  color: var(--main-bg);
   max-width: 200px;
   padding: 10px 20px;
   background-color: var(--main-color);
@@ -161,11 +160,11 @@ main {
   height: 100%;
   position: absolute;
   top: 0;
-  color: var(--white);
+  color: var(--main-bg);
 }
 
 .slider-content div .fi {
-  color: var(--white);
+  color: var(--main-bg);
 }
 
 .slider-content > div {
@@ -348,7 +347,7 @@ a.text-catalog {
 
 .catalog a:hover .text-catalog {
   background-color: var(--main-color);
-  color: var(--white);
+  color: var(--main-bg);
 }
 .text-catalog:hover {
   background-color: var(--color-hover);
@@ -356,11 +355,11 @@ a.text-catalog {
 .catalog a:hover .text-catalog p,
 .text-catalog:hover p {
   transition: var(--transition);
-  color: var(--white);
+  color: var(--main-bg);
 }
 
 .text-catalog:hover {
-  color: var(--white);
+  color: var(--main-bg);
 }
 
 .image-catalog {
@@ -444,7 +443,7 @@ a.text-catalog {
 }
 
 .services-catalog a:hover p {
-  color: var(--white);
+  color: var(--main-bg);
 }
 
 /* end services */
@@ -520,7 +519,7 @@ img.row-3 {
 }
 
 .image-show-box .fi {
-  color: var(--white);
+  color: var(--main-bg);
   font-size: 40px;
 }
 
@@ -607,7 +606,7 @@ img.row-3 {
 }
 
 .access-button a:hover {
-  color: var(--white);
+  color: var(--main-bg);
   background-color: var(--main-color);
 }
 
@@ -673,12 +672,12 @@ img.row-3 {
 .detail-title:hover,
 .open-box .detail-title {
   background-color: var(--main-color);
-  color: var(--white);
+  color: var(--main-bg);
 }
 
 .detail-title:hover .fi,
 .open-box .fi {
-  color: var(--white);
+  color: var(--main-bg);
 }
 
 .detail-title .fi {
