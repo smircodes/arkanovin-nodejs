@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/header-style.css">
+    <title>اخبار و مقالات</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header class="white-header">
+        <div class="header">
+            <div class="hmb">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="../index.html" class="logo">
+                <img src="../media/logo-light.png" alt="" class="active-logo">
+                <img src="../media/logo-dark.png" alt="">
+            </a>
+            <nav>
+                <a href="../index.html">صفحه اصلی</a>
+                <a href="vision.html">نماکاران آرکا نوین</a>
+                <a href="products.html">محصولات</a>
+                <a href="sevices.html">خدمات مهندسی</a>
+                <a href="projects.html">پروژه ها</a>
+                <a href="#" class="active">اخبار و مقالات</a>
+                <a href="contact-us.html">تماس با ما</a>
+                <a href="about-us.html">درباره ما</a>
+            </nav>
+            <div class="search-box" onclick="openSearchBox()">
+                <i class="fi fi-rr-search"></i>
+            </div>
+            <div class="search-input">
+                <button class="btn" onclick="openSearchBox()"><i class="fi fi-rr-x"></i></button>
+                <input type="text" name="" id="" placeholder="جستجو">
+                <button class="btn"><i class="fi fi-rr-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="site-map">
+            <div>
+                <p><a href="../index.html">خانه</a> / <a href="#">اخبار و مقالات</a></p>
+            </div>
+        </div>
+        <div class="container">
+            <h3 class="title">اخبار و مقالات</h3>
+            <p>درحال حاضر گروه صنغتی نماکاران که با اجرای چندین پروژه عظیم در سطح کشور در زمره معتبر ترین فعالان این
+                صنعت قرار گرفته است، عزم آن دارد تا به یکی از پیشتازان اصلی این صنعت بدل شود</p>
+
+            <div class="catalog-option">
+                <div>
+                    <span onclick="changePage(-1)" class="arrow"><i class="fi fi-rr-angle-right"></i></span>
+                    <div>
+                        <span class="catalog-count"></span>
+                    </div>
+                    <span onclick="changePage(1)" class="arrow"><i class="fi fi-rr-angle-left"></i></span>
+                </div>
+                <div>
+                    <select name="" id="filter">
+                        <option value="all">همه</option>
+                        <option value="news">اخبار</option>
+                        <option value="article">مقالات</option>
+                    </select>
+                </div>
+            </div>
+            <div class="catalog project-catalog">
+                <!-- catalog boxes will add here -->
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div>
+                <h4>آدرس ما</h4>
+                <div>
+                    <h4>آدرس دفتر تهران</h4>
+                    <p>زعفرانیه ، انتهای خیابان ثارااله پلاک 45 طبقه 2</p>
+                </div>
+            </div>
+            <div>
+                <h4>تماس با ما</h4>
+                <div>
+                    <h4>تلفن دفتر تهران</h4>
+                    <a href="tel:+982174313000">02174313000</a>
+                </div>
+            </div>
+            <div>
+                <h4>شبکه های اجتماعی</h4>
+                <div class="social-media-icons">
+                    <a href="#"><i class="fi fi-brands-instagram"></i></a>
+                    <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+                    <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="brands">
+                <img src="../media/brands.png" alt="">
+            </div>
+        </div>
+        <div class="copyright">
+            <div>
+                <p>طراحی سایت و بهینه سازی سایت </p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/filter.js"></script>
+    <script>
+        let catalogList = blogs;
+        let thispage = showCatalog(blogs, "all");
+        // change catalog filter
+        let filter = document.getElementById("filter");
+        filter.addEventListener("change", () => {
+            clearCatalog();
+            showCatalog(catalogList, filter.value, 1);
+            thispage = 1
+        })
+    </script>
+</body>
+
+</html>

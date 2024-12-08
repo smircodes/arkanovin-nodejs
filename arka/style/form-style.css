@@ -1,0 +1,31 @@
+form , form div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+label{
+    cursor: pointer;
+    font-size: 14px;
+}
+.file-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+textarea{
+    min-height: 6rem;
+    resize: vertical;
+}
+
+.contact-form form{
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(300px , 1fr));
+    grid-auto-flow: dense;
+    gap: 30px;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/header-style.css">
+    <link rel="stylesheet" href="../style/form-style.css">
+    <title>همکاری با ما</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header class="white-header">
+        <div class="header">
+            <div class="hmb">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="../index.html" class="logo">
+                <img src="../media/logo-light.png" alt="" class="active-logo">
+                <img src="../media/logo-dark.png" alt="">
+            </a>
+            <nav>
+                <a href="../index.html">صفحه اصلی</a>
+                <a href="vision.html">نماکاران آرکا نوین</a>
+                <a href="products.html">محصولات</a>
+                <a href="sevices.html">خدمات مهندسی</a>
+                <a href="#">پروژه ها</a>
+                <a href="#">اخبار و مقالات</a>
+                <a href="#" class="active">تماس با ما</a>
+                <a href="about-us.html">درباره ما</a>
+            </nav>
+            <div class="search-box" onclick="openSearchBox()">
+                <i class="fi fi-rr-search"></i>
+            </div>
+            <div class="search-input">
+                <button class="btn" onclick="openSearchBox()"><i class="fi fi-rr-x"></i></button>
+                <input type="text" name="" id="" placeholder="جستجو">
+                <button class="btn"><i class="fi fi-rr-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="site-map">
+            <div>
+                <p><a href="../index.html">خانه</a> / <a href="#">همکاری با ما</a></p>
+            </div>
+        </div>
+        <div class="container">
+            <h3 class="title">همکاری با ما</h3>
+            <p>برای پیوستن به تیم بزرگ ما و همکاری با شرکت ما میبایست در ابتدا درخواست خود را ثبت کنید و رزومه خود
+                را ارسال کنید تا مسولین مربوطه در اولین فرصت بررسی کرده و در صورت تایید صلاحیت شما با شما تماس حاصل
+                میکنند و نتیجه را در اختیار شما میگزارند</p>
+            <div>
+                <div class="form-section">
+                    <div class="form">
+                        <form>
+                            <div>
+                                <h4>مشخصات</h4>
+                                <input type="text" name="" id="" placeholder="نام">
+                                <input type="text" name="" id="" placeholder="نام خانوادگی">
+                            </div>
+                            <div>
+                                <h4>اطلاعات تماس</h4>
+                                <input type="email" name="" id="" placeholder="ایمیل">
+                                <input type="tel" name="" id="" placeholder="شماره همراه">
+                            </div>
+                            <div>
+                                <h4>موضوع پیام</h4>
+                                <input type="text" name="" id="" placeholder="درخواست شما">
+                            </div>
+                            <div>
+                                <h4>پیام</h4>
+                                <textarea name="" id="" placeholder="درخواست خود را کامل بنویسید"></textarea>
+                            </div>
+                            <div>
+                                <div class="file-input">
+                                    <p id="file-title"></p>
+                                    <label for="file">ضمیمه کردن فایل(pdf , jpg, word)</label>
+                                </div>
+                                <input type="file" name="" id="file" accept=".pdf ,.jpg ,.docx">
+                            </div>
+                            <div>
+                                <input type="submit" value="ارسال درخواست" class="btn" name="" id="">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-banner">
+                        <img src="../media/grundfos_topbanner_1920x900px 1.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div>
+                <h4>آدرس ما</h4>
+                <div>
+                    <h4>آدرس دفتر تهران</h4>
+                    <p>زعفرانیه ، انتهای خیابان ثارااله پلاک 45 طبقه 2</p>
+                </div>
+            </div>
+            <div>
+                <h4>تماس با ما</h4>
+                <div>
+                    <h4>تلفن دفتر تهران</h4>
+                    <a href="tel:+982174313000">02174313000</a>
+                </div>
+            </div>
+            <div>
+                <h4>شبکه های اجتماعی</h4>
+                <div class="social-media-icons">
+                    <a href="#"><i class="fi fi-brands-instagram"></i></a>
+                    <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+                    <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="brands">
+                <img src="../media/brands.png" alt="">
+            </div>
+        </div>
+        <div class="copyright">
+            <div>
+                <p>طراحی سایت و بهینه سازی سایت </p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+    <script>
+        // get and show file name
+        let fileInput = document.getElementById("file")
+        fileInput.addEventListener("change", () => {
+            let fileInput = document.getElementById("file").value.split("\\");
+            document.getElementById("file-title").innerHTML = fileInput.pop();
+        })
+
+    </script>
+</body>
+
+</html>
