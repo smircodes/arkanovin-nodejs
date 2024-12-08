@@ -6,6 +6,7 @@
   --border-color: rgba(13, 20, 6, 0.2);
   --main-color: #85c441;
   --color-hover: #444;
+  --white: #fff;
   --font: IranYekan;
   --transition: 0.3s linear;
   --max-width: 1280px;
@@ -74,14 +75,14 @@ section {
 
 button i {
   font-size: 14px;
-  color: var(--main-bg) !important;
+  color: var(--white) !important;
 }
 
 .btn {
   cursor: pointer;
   font-family: var(--font);
   font-size: 16px;
-  color: var(--main-bg);
+  color: var(--white);
   max-width: 200px;
   padding: 10px 20px;
   background-color: var(--main-color);
@@ -160,11 +161,11 @@ main {
   height: 100%;
   position: absolute;
   top: 0;
-  color: var(--main-bg);
+  color: var(--white);
 }
 
 .slider-content div .fi {
-  color: var(--main-bg);
+  color: var(--white);
 }
 
 .slider-content > div {
@@ -329,49 +330,39 @@ main {
   gap: 20px;
 }
 
-.text-catalog,
-.text-content {
+.text-catalog {
   text-align: justify;
   padding: 30px;
   background-color: var(--second-bg);
   grid-row: auto / span 1;
 }
 
-a.text-catalog,
-a.text-content {
+a.text-catalog {
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
 }
 
-.text-catalog h4,
-.text-content h4 {
+.text-catalog h4 {
   margin-bottom: 20px;
 }
 
 .catalog a:hover .text-catalog {
   background-color: var(--main-color);
-  color: var(--main-bg);
+  color: var(--white);
 }
-.catalog a:hover .text-content {
+.text-catalog:hover {
   background-color: var(--color-hover);
-  color: var(--main-bg);
 }
-
 .catalog a:hover .text-catalog p,
-.text-catalog:hover p,
-.catalog a:hover .text-content p,
-.text-content:hover p {
+.text-catalog:hover p {
   transition: var(--transition);
-  color: var(--main-bg);
+  color: var(--white);
 }
 
-.text-catalog:hover,
-.text-content:hover {
-  color: var(--main-bg);
+.text-catalog:hover {
+  color: var(--white);
 }
-.content:hover {
-  background-color: var(--color-hover);
-}
+
 .image-catalog {
   border-radius: 1rem;
   position: relative;
@@ -379,7 +370,7 @@ a.text-content {
   grid-row: auto / span 2;
 }
 
-.image-catalog .text-content {
+.image-catalog .text-catalog {
   width: 80%;
   position: absolute;
   top: 50px;
@@ -453,7 +444,7 @@ a.text-content {
 }
 
 .services-catalog a:hover p {
-  color: var(--main-bg);
+  color: var(--white);
 }
 
 /* end services */
@@ -529,7 +520,7 @@ img.row-3 {
 }
 
 .image-show-box .fi {
-  color: var(--main-bg);
+  color: var(--white);
   font-size: 40px;
 }
 
@@ -616,7 +607,7 @@ img.row-3 {
 }
 
 .access-button a:hover {
-  color: var(--main-bg);
+  color: var(--white);
   background-color: var(--main-color);
 }
 
@@ -682,12 +673,12 @@ img.row-3 {
 .detail-title:hover,
 .open-box .detail-title {
   background-color: var(--main-color);
-  color: var(--main-bg);
+  color: var(--white);
 }
 
 .detail-title:hover .fi,
 .open-box .fi {
-  color: var(--main-bg);
+  color: var(--white);
 }
 
 .detail-title .fi {
