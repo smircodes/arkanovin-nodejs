@@ -329,19 +329,22 @@ main {
   gap: 20px;
 }
 
-.text-catalog {
+.text-catalog,
+.text-content {
   text-align: justify;
   padding: 30px;
   background-color: var(--second-bg);
   grid-row: auto / span 1;
 }
 
-a.text-catalog {
+a.text-catalog,
+a.text-content {
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
 }
 
-.text-catalog h4 {
+.text-catalog h4,
+.text-content h4 {
   margin-bottom: 20px;
 }
 
@@ -349,14 +352,21 @@ a.text-catalog {
   background-color: var(--main-color);
   color: var(--main-bg);
 }
+.catalog a:hover .text-content {
+  background-color: var(--color-hover);
+  color: var(--main-bg);
+}
 
 .catalog a:hover .text-catalog p,
-.text-catalog:hover p {
+.text-catalog:hover p,
+.catalog a:hover .text-content p,
+.text-content:hover p {
   transition: var(--transition);
   color: var(--main-bg);
 }
 
-.text-catalog:hover {
+.text-catalog:hover,
+.text-content:hover {
   color: var(--main-bg);
 }
 .content:hover {
@@ -369,7 +379,7 @@ a.text-catalog {
   grid-row: auto / span 2;
 }
 
-.image-catalog .text-catalog {
+.image-catalog .text-content {
   width: 80%;
   position: absolute;
   top: 50px;
