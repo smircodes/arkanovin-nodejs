@@ -53,11 +53,11 @@ const server = http.createServer((req, res) => {
     res.write(homeMainLogic);
     res.end();
   } else if (req.url === "/media/logo-light.png") {
-    res.writeHead(200, { "content-type": "image/svg+xml" });
+    res.writeHead(200, { "content-type": "image/png" });
     res.write(mediaLogoLight);
     res.end();
   } else if (req.url === "/media/logo-dark.png") {
-    res.writeHead(200, { "content-type": "image/svg+xml" });
+    res.writeHead(200, { "content-type": "image/png" });
     res.write(mediaLogoDark);
     res.end();
   } else if (req.url === "/media/project-slide.png") {
