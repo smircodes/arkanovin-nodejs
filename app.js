@@ -1,59 +1,64 @@
 const http = require("http");
 const fs = require("fs");
+console.log("Node js server run.");
 
-// Determine MIME type based on file extension
+// Helper function to determine MIME type based on file extension
 const getMimeType = (filePath) => {
-  const ext = filePath.slice(filePath.lastIndexOf(".")); // Get file extension
+  const ext = filePath.slice(filePath.lastIndexOf("."));
   const mimeTypes = {
     ".html": "text/html",
     ".css": "text/css",
     ".js": "application/javascript",
     ".png": "image/png",
     ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
     ".woff": "font/woff",
     ".svg": "image/svg+xml",
   };
-  return mimeTypes[ext] || "application/octet-stream"; // Default type
+  return mimeTypes[ext] || "application/octet-stream";
 };
 
-// Function to scan directory and build a file map
 const buildFileMap = (directory, baseUrl = "") => {
   const files = {};
-  const entries = fs.readdirSync(directory); // List all files and folders in directory
+  const entries = fs.readdirSync(directory); // List all entries (files + folders)
 
-  for (const entry of entries) {
+  entries.forEach((entry) => {
     const fullPath = `${directory}/${entry}`;
-    const urlPath = `${baseUrl}/${entry}`; // Create URL path
+    const urlPath = `${baseUrl}/${entry}`;
 
-    if (fs.lstatSync(fullPath).isDirectory()) {
-      // If entry is a folder, call buildFileMap recursively
+    const isDirectory = fs.lstatSync(fullPath).isDirectory(); // Check if it's a folder
+
+    if (isDirectory) {
+      // Recursively process folders
       Object.assign(files, buildFileMap(fullPath, urlPath));
     } else {
-      // If entry is a file, read its content and store in map
-      const mimeType = getMimeType(fullPath);
+      // Add file to the map
       files[urlPath] = {
         content: fs.readFileSync(fullPath), // Read file content
-        type: mimeType, // Get file type
+        type: getMimeType(fullPath), // Get file type
       };
     }
-  }
+  });
 
   return files;
 };
-
-// Create the file map for the "./arka" folder
-const files = buildFileMap("./arka");
+//Test buildFileMap function
+const fileMap = buildFileMap(".");
+console.log(fileMap);
 
 // Create server
 const server = http.createServer((req, res) => {
   console.log(`Request URL: ${req.url}`);
-  const file = files[req.url];
+
+  let url = req.url === "/" ? "/index.html" : req.url; // Default to index.html if root is requested
+  const file = fileMap[url];
+
   if (file) {
     res.writeHead(200, { "Content-Type": file.type });
     res.end(file.content);
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
-    res.end("<h1>❌ Page Not Found ❌</h1>");
+    res.end("<h1> Page Not Found ⛔</h1>");
   }
 });
 
