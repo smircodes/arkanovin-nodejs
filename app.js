@@ -1,8 +1,6 @@
 const http = require("http");
 const fs = require("fs");
 
-console.log("Nodejs Server to serve static files");
-
 // Determine MIME type based on file extension
 const getMimeType = (filePath) => {
   const ext = filePath.slice(filePath.lastIndexOf(".")); // Get file extension
@@ -51,11 +49,9 @@ const server = http.createServer((req, res) => {
   console.log(`Request URL: ${req.url}`);
   const file = files[req.url];
   if (file) {
-    // File exists, serve it with the correct content type
     res.writeHead(200, { "Content-Type": file.type });
     res.end(file.content);
   } else {
-    // Handle 404 Not Found
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>❌ Page Not Found ❌</h1>");
   }
