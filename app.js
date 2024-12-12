@@ -1,119 +1,50 @@
 const http = require("http");
-const { readFileSync } = require("fs");
+const fs = require("fs");
 
 console.log("Nodejs Server to serve static files");
 
-/*
--------------------------------------------
-Refactor & cleaner 
--------------------------------------------
-*/
-
-// Helper function to determine MIME type based on file extension
-
-const getMimeType = (ext) => {
+// Determine MIME type based on file extension
+const getMimeType = (filePath) => {
+  const ext = filePath.slice(filePath.lastIndexOf(".")); // Get file extension
   const mimeTypes = {
     ".html": "text/html",
     ".css": "text/css",
     ".js": "application/javascript",
     ".png": "image/png",
     ".jpg": "image/jpeg",
-    ".jpeg": "image/jpeg",
     ".woff": "font/woff",
     ".svg": "image/svg+xml",
   };
-  return mimeTypes[ext] || "application/octet-stream";
+  return mimeTypes[ext] || "application/octet-stream"; // Default type
 };
 
-// Load all files synchronously at the start
-const files = {
-  "/": { content: readFileSync("./arka/index.html"), type: "text/html" },
-  "/style/header-style.css": {
-    content: readFileSync("./arka/style/header-style.css"),
-    type: "text/css",
-  },
+// Function to scan directory and build a file map
+const buildFileMap = (directory, baseUrl = "") => {
+  const files = {};
+  const entries = fs.readdirSync(directory); // List all files and folders in directory
 
-  "/style/fonts.css": {
-    content: readFileSync("./arka/style/fonts.css"),
-    type: "text/css",
-  },
-  "/style/style.css": {
-    content: readFileSync("./arka/style/style.css"),
-    type: "text/css",
-  },
-  "/js/main.js": {
-    content: readFileSync("./arka/js/main.js"),
-    type: "application/javascript",
-  },
-  "/media/logo-light.png": {
-    content: readFileSync("./arka/media/logo-light.png"),
-    type: "image/png",
-  },
-  "/media/logo-dark.png": {
-    content: readFileSync("./arka/media/logo-dark.png"),
-    type: "image/png",
-  },
-  "/media/project-slide.png": {
-    content: readFileSync("./arka/media/project-slide.png"),
-    type: "image/png",
-  },
-  "/media/project1.png": {
-    content: readFileSync("./arka/media/project1.png"),
-    type: "image/png",
-  },
-  "/media/project2.png": {
-    content: readFileSync("./arka/media/project2.png"),
-    type: "image/png",
-  },
-  "/media/project3.png": {
-    content: readFileSync("./arka/media/project3.png"),
-    type: "image/png",
-  },
-  "/media/project4.png": {
-    content: readFileSync("./arka/media/project4.png"),
-    type: "image/png",
-  },
-  "/media/cat1.png": {
-    content: readFileSync("./arka/media/cat1.png"),
-    type: "image/png",
-  },
-  "/media/cat2.png": {
-    content: readFileSync("./arka/media/cat2.png"),
-    type: "image/png",
-  },
-  "/media/cat3.png": {
-    content: readFileSync("./arka/media/cat3.png"),
-    type: "image/png",
-  },
-  "/media/cat4.png": {
-    content: readFileSync("./arka/media/cat4.png"),
-    type: "image/png",
-  },
-  "/media/cat5.png": {
-    content: readFileSync("./arka/media/cat5.png"),
-    type: "image/png",
-  },
-  "/media/brands.png": {
-    content: readFileSync("./arka/media/brands.png"),
-    type: "image/png",
-  },
-  "/media/Orama.png": {
-    content: readFileSync("./arka/media/Orama.png"),
-    type: "image/png",
-  },
-  "/media/Schuco.png": {
-    content: readFileSync("./arka/media/Schuco.png"),
-    type: "image/png",
-  },
-  "/media/footer-bg.png": {
-    content: readFileSync("./arka/media/footer-bg.png"),
-    type: "image/png",
-  },
-  "/style/fonts/iranyekanwebregular.woff": {
-    content: readFileSync("./arka/style/fonts/iranyekanwebregular.woff"),
-    type: "font/woff",
-  },
+  for (const entry of entries) {
+    const fullPath = `${directory}/${entry}`;
+    const urlPath = `${baseUrl}/${entry}`; // Create URL path
+
+    if (fs.lstatSync(fullPath).isDirectory()) {
+      // If entry is a folder, call buildFileMap recursively
+      Object.assign(files, buildFileMap(fullPath, urlPath));
+    } else {
+      // If entry is a file, read its content and store in map
+      const mimeType = getMimeType(fullPath);
+      files[urlPath] = {
+        content: fs.readFileSync(fullPath), // Read file content
+        type: mimeType, // Get file type
+      };
+    }
+  }
+
+  return files;
 };
+
+// Create the file map for the "./arka" folder
+const files = buildFileMap("./arka");
 
 // Create server
 const server = http.createServer((req, res) => {
