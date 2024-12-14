@@ -1,22 +1,24 @@
 const http = require("http");
 const fs = require("fs");
+const getMimeType = require("mime-types").lookup;
+
 console.log("Node js server run.");
 
 // Helper function to determine MIME type based on file extension
-const getMimeType = (filePath) => {
-  const ext = filePath.slice(filePath.lastIndexOf("."));
-  const mimeTypes = {
-    ".html": "text/html",
-    ".css": "text/css",
-    ".js": "application/javascript",
-    ".png": "image/png",
-    ".jpg": "image/jpeg",
-    ".jpeg": "image/jpeg",
-    ".woff": "font/woff",
-    ".svg": "image/svg+xml",
-  };
-  return mimeTypes[ext] || "application/octet-stream";
-};
+// const getMimeType = (filePath) => {
+//   const ext = filePath.slice(filePath.lastIndexOf("."));
+//   const mimeTypes = {
+//     ".html": "text/html",
+//     ".css": "text/css",
+//     ".js": "application/javascript",
+//     ".png": "image/png",
+//     ".jpg": "image/jpeg",
+//     ".jpeg": "image/jpeg",
+//     ".woff": "font/woff",
+//     ".svg": "image/svg+xml",
+//   };
+//   return mimeTypes[ext] || "application/octet-stream";
+// };
 
 const buildFileMap = (directory, baseUrl = "") => {
   const files = {};
