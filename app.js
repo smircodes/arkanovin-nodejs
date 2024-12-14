@@ -1,5 +1,6 @@
 const http = require("http");
 const fs = require("fs");
+const fetch = require("node-fetch");
 const getMimeType = require("mime-types").lookup;
 
 console.log("Node js server run.");
@@ -49,18 +50,35 @@ const fileMap = buildFileMap(".");
 console.log(fileMap);
 
 // Create server
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   console.log(`Request URL: ${req.url}`);
 
   let url = req.url === "/" ? "/index.html" : req.url; // Default to index.html if root is requested
-  const file = fileMap[url];
 
-  if (file) {
-    res.writeHead(200, { "Content-Type": file.type });
-    res.end(file.content);
+  if (req.url === "/products") {
+    // Handle API fetch for /products
+    try {
+      const apiResponse = await fetch("https://fakestoreapi.com/products");
+      const products = await apiResponse.json();
+
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(products));
+    } catch (error) {
+      console.error("Error fetching Products:", error);
+      res.writeHead(500, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Failed to fetch products" }));
+    }
   } else {
-    res.writeHead(404, { "Content-Type": "text/html" });
-    res.end("<h1> Page Not Found ⛔</h1>");
+    // Serve static files
+    const file = fileMap[url];
+
+    if (file) {
+      res.writeHead(200, { "Content-Type": file.type });
+      res.end(file.content);
+    } else {
+      res.writeHead(404, { "Content-Type": "text/html" });
+      res.end("<h1> Page Not Found ⛔</h1>");
+    }
   }
 });
 

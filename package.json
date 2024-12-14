@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "mime-types": "^2.1.35",
+    "node-fetch": "^2.7.0",
     "nodemon": "^3.1.7"
   },
   "name": "arkanovin-last",
