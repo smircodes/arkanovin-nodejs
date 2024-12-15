@@ -5,22 +5,6 @@ const getMimeType = require("mime-types").lookup;
 
 console.log("Node js server run.");
 
-// Helper function to determine MIME type based on file extension
-// const getMimeType = (filePath) => {
-//   const ext = filePath.slice(filePath.lastIndexOf("."));
-//   const mimeTypes = {
-//     ".html": "text/html",
-//     ".css": "text/css",
-//     ".js": "application/javascript",
-//     ".png": "image/png",
-//     ".jpg": "image/jpeg",
-//     ".jpeg": "image/jpeg",
-//     ".woff": "font/woff",
-//     ".svg": "image/svg+xml",
-//   };
-//   return mimeTypes[ext] || "application/octet-stream";
-// };
-
 const buildFileMap = (directory, baseUrl = "") => {
   const files = {};
   const entries = fs.readdirSync(directory); // List all entries (files + folders)
@@ -49,7 +33,30 @@ const buildFileMap = (directory, baseUrl = "") => {
 const fileMap = buildFileMap(".");
 console.log(fileMap);
 
-// ----------------------- Create Server ---------------------------------
+// ---------------- Create Server1 ------------------
+
+// const server = http.createServer((req, res) => {
+//   if (req.url === "/") {
+//     const homePage = fs.readFileSync("./index.html", "utf8");
+//     res.writeHead(200, { "Content-Type": "text/html" });
+//     res.end(homePage);
+//   } else if (req.url === "/about") {
+//     const aboutPage = fs.readFileSync("./about.html", "utf8");
+//     res.writeHead(200, { "Content-Type": "text/html" });
+//     res.end(aboutPage);
+//   } else if (req.url.startsWith("/static")) {
+//     // Handle static files manually here
+//   } else if (req.url === "/api/product") {
+//     // Fetch and send API data
+//   } else {
+//     // const notFoundPage = fs.readFileSync("./404.html", "utf8");
+//     res.writeHead(404, { "Content-Type": "text/html" });
+//     res.end("<h1> Page Not Found ⛔</h1>");
+//   }
+// });
+
+// ---------------- Create Server2 ------------------
+
 const server = http.createServer(async (req, res) => {
   console.log(`Request URL: ${req.url}`);
 
