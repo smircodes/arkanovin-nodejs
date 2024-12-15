@@ -45,11 +45,11 @@ const buildFileMap = (directory, baseUrl = "") => {
 
   return files;
 };
-//Test buildFileMap function
+// Test buildFileMap function
 const fileMap = buildFileMap(".");
 console.log(fileMap);
 
-// Create server
+// ----------------------- Create Server ---------------------------------
 const server = http.createServer(async (req, res) => {
   console.log(`Request URL: ${req.url}`);
 
