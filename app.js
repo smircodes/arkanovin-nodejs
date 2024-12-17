@@ -5,6 +5,7 @@ const getMimeType = require("mime-types").lookup;
 
 console.log("Node js server run.");
 
+// Function to dynamically build the files object
 const buildFileMap = (directory, baseUrl = "") => {
   const files = {};
   const entries = fs.readdirSync(directory); // List all entries (files + folders)
